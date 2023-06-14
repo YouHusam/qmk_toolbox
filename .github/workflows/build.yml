@@ -149,7 +149,7 @@ jobs:
         product-path: "macos/build/QMK Toolbox.app"
 
     - name: Build (unsigned-only)
-      if: ${{ !github.event.pull_request.head.repo.fork && !github.event.repository.fork }}
+      if: ${{ github.event.pull_request.head.repo.fork || github.event.repository.fork }}
       working-directory: ./macos
       run: |
         mkdir build
